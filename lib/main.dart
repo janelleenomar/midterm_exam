@@ -221,6 +221,27 @@ class MainApp extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Delivery',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            _buildDeliveryOption(
+                              'Standard',
+                              '5-7 days',
+                              '\$3,00',
+                            ),
+                            const SizedBox(height: 10),
+                            _buildDeliveryOption(
+                              'Express',
+                              '1-2 days',
+                              '\$12,00',
+                            ),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -232,6 +253,54 @@ class MainApp extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildDeliveryOption(String type, String days, String price) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFF0055FF), width: 1),
+      ),
+      child: Row(
+        children: [
+          Text(
+            type,
+            style: GoogleFonts.montserrat(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: const Color(0xFF0055FF).withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              days,
+              style: GoogleFonts.montserrat(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xFF0055FF),
+              ),
+            ),
+          ),
+          const Spacer(),
+          Text(
+            price,
+            style: GoogleFonts.montserrat(
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
