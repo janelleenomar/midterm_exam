@@ -11,6 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: const Color(0xFF0055FF),
@@ -37,440 +38,451 @@ class MainApp extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
-                child: Stack(
+                child: Column(
                   children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Image.asset(
-                                'media/product_main.png',
-                                width: double.infinity,
-                                height: 450,
-                                fit: BoxFit.fitWidth,
-                                alignment: Alignment.topCenter,
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                child: _buildPhoneTopOverlay(),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 23.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    _buildPageIndicator(true),
-                                    const SizedBox(width: 8),
-                                    _buildPageIndicator(false),
-                                    const SizedBox(width: 8),
-                                    _buildPageIndicator(false),
-                                    const SizedBox(width: 8),
-                                    _buildPageIndicator(false),
-                                    const SizedBox(width: 8),
-                                    _buildPageIndicator(false),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              alignment: Alignment.bottomCenter,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '\$17,00',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color:
-                                            Colors.red.withValues(alpha: 0.1),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Transform.flip(
-                                        flipX: true,
-                                        child: Icon(
-                                          Icons.reply,
-                                          size: 20,
-                                          color: Colors.black
-                                              .withValues(alpha: 0.3),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                Image.asset(
+                                  'media/product_main.png',
+                                  width: double.infinity,
+                                  height: 450,
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.topCenter,
                                 ),
-                                const SizedBox(height: 10),
-                                const Text(
-                                  'Lorem ipsum dolor sit amet, consectetur '
-                                  'adipiscing elit. Etiam arcu mauris, scelerisque '
-                                  'eu mauris id, pretium pulvinar sapien.',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black87,
-                                  ),
+                                Positioned(
+                                  top: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: _buildPhoneTopOverlay(),
                                 ),
-                                const SizedBox(height: 15),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Variations',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    _buildChip('Pink', false),
-                                    const SizedBox(width: 8),
-                                    _buildChip('M', false),
-                                    const Spacer(),
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFF0055FF),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(Icons.arrow_forward,
-                                          color: Colors.white, size: 20),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                SizedBox(
-                                  height: 80,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 23.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      _buildThumbnail('media/variation_1.png'),
-                                      const SizedBox(width: 5),
-                                      _buildThumbnail('media/variation_2.png'),
-                                      const SizedBox(width: 5),
-                                      _buildThumbnail('media/variation_3.png'),
+                                      _buildPageIndicator(true),
+                                      const SizedBox(width: 8),
+                                      _buildPageIndicator(false),
+                                      const SizedBox(width: 8),
+                                      _buildPageIndicator(false),
+                                      const SizedBox(width: 8),
+                                      _buildPageIndicator(false),
+                                      const SizedBox(width: 8),
+                                      _buildPageIndicator(false),
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 20),
-                                Text(
-                                  'Specifications',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Material',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    _buildSpecificationChip('Cotton 95%'),
-                                    const SizedBox(width: 10),
-                                    _buildSpecificationChip('Nylon 5%'),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Origin',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                _buildSpecificationChip(
-                                  'EU',
-                                  color: const Color(0xFFE8EFFF),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Size guide',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFF0055FF),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.arrow_forward,
-                                        color: Colors.white,
-                                        size: 20,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'Delivery',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                _buildDeliveryOption(
-                                  'Standard',
-                                  '5-7 days',
-                                  '\$3,00',
-                                ),
-                                const SizedBox(height: 10),
-                                _buildDeliveryOption(
-                                  'Express',
-                                  '1-2 days',
-                                  '\$12,00',
-                                ),
-                                const SizedBox(height: 25),
-                                Text(
-                                  'Rating & Reviews',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    _buildStarRating(4),
-                                    const SizedBox(width: 10),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFE8EFFF),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Text(
-                                        '4/5',
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '\$17,00',
                                         style: GoogleFonts.montserrat(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w700,
                                           color: Colors.black,
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        boxShadow: [
-                                          BoxShadow(
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.red
+                                              .withValues(alpha: 0.1),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Transform.flip(
+                                          flipX: true,
+                                          child: Icon(
+                                            Icons.reply,
+                                            size: 20,
                                             color: Colors.black
-                                                .withValues(alpha: 0.15),
-                                            blurRadius: 8,
-                                            offset: const Offset(0, 4),
-                                          ),
-                                        ],
-                                      ),
-                                      child: const CircleAvatar(
-                                        radius: 24,
-                                        backgroundColor: Colors.white,
-                                        child: CircleAvatar(
-                                          radius: 20,
-                                          backgroundImage: AssetImage(
-                                            'media/review.png',
+                                                .withValues(alpha: 0.3),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(width: 15),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Veronika',
-                                            style: GoogleFonts.montserrat(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 5),
-                                          _buildStarRating(4, size: 16),
-                                          const SizedBox(height: 10),
-                                          Text(
-                                            'Lorem ipsum dolor sit amet, consetetur sadipscing'
-                                            '\nelitr, sed diam nonumy eirmod tempor invidunt ut '
-                                            '\nlabore et dolore magna aliquyam'
-                                            'erat, sed ...',
-                                            style: GoogleFonts.montserrat(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 25),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xFF0055FF),
-                                      foregroundColor: Colors.white,
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 15,
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      elevation: 0,
-                                    ),
-                                    child: Text(
-                                      'View All Reviews',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w100,
-                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Text(
+                                    'Lorem ipsum dolor sit amet, consectetur '
+                                    'adipiscing elit. Etiam arcu mauris, scelerisque '
+                                    'eu mauris id, pretium pulvinar sapien.',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black87,
                                     ),
                                   ),
-                                ),
-                                const SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Most Popular',
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Variations',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800,
+                                        ),
                                       ),
-                                    ),
-                                    Row(
+                                      const SizedBox(width: 10),
+                                      _buildChip('Pink', false),
+                                      const SizedBox(width: 8),
+                                      _buildChip('M', false),
+                                      const Spacer(),
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFF0055FF),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(Icons.arrow_forward,
+                                            color: Colors.white, size: 20),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                    height: 80,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
                                       children: [
-                                        Text(
-                                          'See All',
+                                        _buildThumbnail(
+                                            'media/variation_1.png'),
+                                        const SizedBox(width: 5),
+                                        _buildThumbnail(
+                                            'media/variation_2.png'),
+                                        const SizedBox(width: 5),
+                                        _buildThumbnail(
+                                            'media/variation_3.png'),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20),
+                                  Text(
+                                    'Specifications',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Material',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      _buildSpecificationChip('Cotton 95%'),
+                                      const SizedBox(width: 10),
+                                      _buildSpecificationChip('Nylon 5%'),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Origin',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  _buildSpecificationChip(
+                                    'EU',
+                                    color: const Color(0xFFE8EFFF),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Size guide',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFF0055FF),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(
+                                          Icons.arrow_forward,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Delivery',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  _buildDeliveryOption(
+                                    'Standard',
+                                    '5-7 days',
+                                    '\$3,00',
+                                  ),
+                                  const SizedBox(height: 10),
+                                  _buildDeliveryOption(
+                                    'Express',
+                                    '1-2 days',
+                                    '\$12,00',
+                                  ),
+                                  const SizedBox(height: 25),
+                                  Text(
+                                    'Rating & Reviews',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      _buildStarRating(4),
+                                      const SizedBox(width: 10),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 4,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFE8EFFF),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Text(
+                                          '4/5',
                                           style: GoogleFonts.montserrat(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.black,
                                           ),
                                         ),
-                                        const SizedBox(width: 8),
-                                        Container(
-                                          padding: const EdgeInsets.all(8),
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFF0055FF),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: const Icon(
-                                            Icons.arrow_forward,
-                                            color: Colors.white,
-                                            size: 20,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 15),
-                                SizedBox(
-                                  height: 150,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      _buildPopularCard(
-                                          'media/popular_1.png', 'New'),
-                                      _buildPopularCard(
-                                          'media/popular_2.png', 'Sale'),
-                                      _buildPopularCard(
-                                          'media/popular_3.png', 'Hot'),
-                                      _buildPopularCard('media/popular_4.png',
-                                          '',
-                                          imageFit: BoxFit.fill),
+                                      ),
                                     ],
                                   ),
-                                ),
-                                const SizedBox(height: 15),
-                                Text(
-                                  'You Might Like',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black,
+                                  const SizedBox(height: 20),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black
+                                                  .withValues(alpha: 0.15),
+                                              blurRadius: 8,
+                                              offset: const Offset(0, 4),
+                                            ),
+                                          ],
+                                        ),
+                                        child: const CircleAvatar(
+                                          radius: 24,
+                                          backgroundColor: Colors.white,
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                              'media/review.png',
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 15),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Veronika',
+                                              style: GoogleFonts.montserrat(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 5),
+                                            _buildStarRating(4, size: 16),
+                                            const SizedBox(height: 10),
+                                            Text(
+                                              'Lorem ipsum dolor sit amet, consetetur sadipscing\n'
+                                              'elitr, sed diam nonumy eirmod tempor invidunt ut \n'
+                                              'labore et dolore magna aliquyam erat, sed ...',
+                                              style: GoogleFonts.montserrat(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                const SizedBox(height: 14),
-                                Wrap(
-                                  spacing: 10,
-                                  runSpacing: 12,
-                                  children: [
-                                    _buildYouMightLikeItem('media/yml_1.png'),
-                                    _buildYouMightLikeItem('media/yml_2.png'),
-                                    _buildYouMightLikeItem('media/yml_3.png'),
-                                    _buildYouMightLikeItem('media/yml_4.png'),
-                                    _buildYouMightLikeItem('media/yml_5.png'),
-                                    _buildYouMightLikeItem('media/yml_6.png'),
-                                  ],
-                                ),
-                                const SizedBox(height: 80), 
-                              ],
+                                  const SizedBox(height: 25),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            const Color(0xFF0055FF),
+                                        foregroundColor: Colors.white,
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 15,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        elevation: 0,
+                                      ),
+                                      child: Text(
+                                        'View All Reviews',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w100,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 30),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Most Popular',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'See All',
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Container(
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: const BoxDecoration(
+                                              color: Color(0xFF0055FF),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: const Icon(
+                                              Icons.arrow_forward,
+                                              color: Colors.white,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  SizedBox(
+                                    height: 150,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        _buildPopularCard(
+                                            'media/popular_1.png', 'New'),
+                                        _buildPopularCard(
+                                            'media/popular_2.png', 'Sale'),
+                                        _buildPopularCard(
+                                            'media/popular_3.png', 'Hot'),
+                                        _buildPopularCard(
+                                            'media/popular_4.png', '',
+                                            imageFit: BoxFit.fill),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Text(
+                                    'You Might Like',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 14),
+                                  Wrap(
+                                    spacing: 10,
+                                    runSpacing: 12,
+                                    children: [
+                                      _buildYouMightLikeItem(
+                                          'media/yml_1.png'),
+                                      _buildYouMightLikeItem(
+                                          'media/yml_2.png'),
+                                      _buildYouMightLikeItem(
+                                          'media/yml_3.png'),
+                                      _buildYouMightLikeItem(
+                                          'media/yml_4.png'),
+                                      _buildYouMightLikeItem(
+                                          'media/yml_5.png'),
+                                      _buildYouMightLikeItem(
+                                          'media/yml_6.png'),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 20),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        color: Colors.white,
-                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 14),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
+                    Container(
+                      color: Colors.white,
+                      padding: const EdgeInsets.only(top: 8, bottom: 14),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
                               children: [
                                 Container(
                                   width: 38,
@@ -539,17 +551,17 @@ class MainApp extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
-                            Container(
-                              width: 135,
-                              height: 5,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(999),
-                              ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            width: 135,
+                            height: 5,
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(999),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
