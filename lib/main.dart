@@ -120,7 +120,7 @@ class MainApp extends StatelessWidget {
                               children: [
                                 Text(
                                   'Variations',
-                                  style: GoogleFonts.montserrat( // <-- Swapped to Montserrat
+                                  style: GoogleFonts.montserrat( 
                                   fontSize: 18,
                                   fontWeight: FontWeight.w800,
                                   ),
@@ -155,6 +155,73 @@ class MainApp extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            const SizedBox(height: 20),
+                            Text(
+                              'Specifications',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Material',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                _buildSpecificationChip('Cotton 95%'),
+                                const SizedBox(width: 10),
+                                _buildSpecificationChip('Nylon 5%'),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Origin',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            _buildSpecificationChip(
+                              'EU',
+                              color: const Color(0xFFE8EFFF),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Size guide',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF0055FF),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
                           ],
                         ),
                       ),
@@ -164,6 +231,24 @@ class MainApp extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSpecificationChip(String label, {Color? color}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      decoration: BoxDecoration(
+        color: color ?? const Color(0xFFFFEBEE),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.montserrat(
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          color: Colors.black,
         ),
       ),
     );
