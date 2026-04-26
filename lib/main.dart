@@ -360,6 +360,59 @@ class MainApp extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Most Popular',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'See All',
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFF0055FF),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 15),
+                            SizedBox(
+                              height: 150,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  _buildPopularCard('media/popular_1.png', 'New'),
+                                  _buildPopularCard('media/popular_2.png', 'Sale'),
+                                  _buildPopularCard('media/popular_3.png', 'Hot'),
+                                  _buildPopularCard('media/popular_4.png', '', imageFit: BoxFit.fill),
+                                ],
+                              ),
+                            ),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -494,6 +547,89 @@ class MainApp extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF0055FF).withValues(alpha: isActive ? 1.0 : 0.3),
         borderRadius: BorderRadius.circular(5),
+      ),
+    );
+  }
+
+  Widget _buildPopularCard(String imagePath, String tag, {BoxFit imageFit = BoxFit.cover}) {
+    return Container(
+      width: 105, // Adjust this width to resize the card horizontally
+      margin: const EdgeInsets.only(right: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0), // Creates the white border
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12), // Rounds all 4 corners of the inner picture
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.grey[100], // Background color in case the image doesn't cover completely
+                  child: Image.asset(
+                    imagePath,
+                    width: double.infinity,
+                    fit: imageFit,
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '1780',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(width: 2),
+                        const Icon(
+                          Icons.favorite,
+                          color: Color(0xFF0055FF),
+                          size: 14,
+                        ),
+                      ],
+                    ),
+                    if (tag.isNotEmpty)
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            tag,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black87,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+          ),
+        ],
       ),
     );
   }
