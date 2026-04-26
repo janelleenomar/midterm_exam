@@ -21,3 +21,6 @@ flutter:
 
   assets:
     - media/product_main.png
+    - media/variation_1.png
+    - media/variation_2.png
+    - media/variation_3.png
