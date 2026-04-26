@@ -9,9 +9,29 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
+        backgroundColor: Colors.grey[200],
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Center(
+            child: Container(
+              width: 320,
+              height: 640,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: const Center(),
+            ),
+          ),
         ),
       ),
     );
