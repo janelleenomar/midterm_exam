@@ -242,6 +242,124 @@ class MainApp extends StatelessWidget {
                               '1-2 days',
                               '\$12,00',
                             ),
+                            const SizedBox(height: 25),
+                            Text(
+                              'Rating & Reviews',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                _buildStarRating(4),
+                                const SizedBox(width: 10),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFE8EFFF),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '4/5',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(alpha: 0.15),
+                                        blurRadius: 8,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: const CircleAvatar(
+                                    radius: 24,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 20,
+                                      backgroundImage: AssetImage(
+                                        'media/review.png',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 15),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Veronika',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 5),
+                                      _buildStarRating(4, size: 16),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Lorem ipsum dolor sit amet, consetetur sadipscing'
+                                        '\nelitr, sed diam nonumy eirmod tempor invidunt ut '
+                                        '\nlabore et dolore magna aliquyam'
+                                        'erat, sed ...',
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 25),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF0055FF),
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 15,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  elevation: 0,
+                                ),
+                                child: Text(
+                                  'View All Reviews',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w100,
+                                  ),
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -254,6 +372,18 @@ class MainApp extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildStarRating(int rating, {double size = 24}) {
+    return Row(
+      children: List.generate(5, (index) {
+        return Icon(
+          index < rating ? Icons.star : Icons.star_border,
+          color: const Color(0xFFFFB300),
+          size: size,
+        );
+      }),
     );
   }
 
