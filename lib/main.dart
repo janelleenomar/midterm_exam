@@ -368,7 +368,7 @@ class MainApp extends StatelessWidget {
                                   'Most Popular',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.black,
                                   ),
                                 ),
@@ -412,6 +412,28 @@ class MainApp extends StatelessWidget {
                                   _buildPopularCard('media/popular_4.png', '', imageFit: BoxFit.fill),
                                 ],
                               ),
+                            ),
+                            const SizedBox(height: 15),
+                            Text(
+                              'You Might Like',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 14),
+                            Wrap(
+                              spacing: 10,
+                              runSpacing: 12,
+                              children: [
+                                _buildYouMightLikeItem('media/yml_1.png'),
+                                _buildYouMightLikeItem('media/yml_2.png'),
+                                _buildYouMightLikeItem('media/yml_3.png'),
+                                _buildYouMightLikeItem('media/yml_4.png'),
+                                _buildYouMightLikeItem('media/yml_5.png'),
+                                _buildYouMightLikeItem('media/yml_6.png'),
+                              ],
                             ),
                             const SizedBox(height: 20),
                           ],
@@ -628,6 +650,60 @@ class MainApp extends StatelessWidget {
                       ),
                   ],
                 ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildYouMightLikeItem(String imagePath) {
+    return SizedBox(
+      width: 160,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(9),
+              child: Image.asset(
+                imagePath,
+                width: double.infinity,
+                height: 165,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(height: 9),
+          Text(
+            'Lorem ipsum dolor sit\namet consectetur',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: const Color(0xFF222222),
+              height: 1.2,
+            ),
+          ),
+          const SizedBox(height: 7),
+          Text(
+            '\$17.00',
+            style: GoogleFonts.montserrat(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: Colors.black,
+              height: 1,
+            ),
           ),
         ],
       ),
