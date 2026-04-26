@@ -82,7 +82,7 @@ class MainApp extends StatelessWidget {
                                 Text(
                                   '\$17,00',
                                   style: GoogleFonts.montserrat(
-                                    fontSize: 28,
+                                    fontSize: 24,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.black,
                                   ),
@@ -115,6 +115,46 @@ class MainApp extends StatelessWidget {
                                 color: Colors.black87,
                               ),
                             ),
+                            const SizedBox(height: 15),
+                            Row(
+                              children: [
+                                Text(
+                                  'Variations',
+                                  style: GoogleFonts.montserrat( // <-- Swapped to Montserrat
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                _buildChip('Pink', false),
+                                const SizedBox(width: 8),
+                                _buildChip('M', false),
+                                const Spacer(),
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF0055FF),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(Icons.arrow_forward,
+                                      color: Colors.white, size: 20),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              height: 80,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  _buildThumbnail('media/variation_1.png'),
+                                  const SizedBox(width: 5),
+                                  _buildThumbnail('media/variation_2.png'),
+                                  const SizedBox(width: 5),
+                                  _buildThumbnail('media/variation_3.png'),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -124,6 +164,40 @@ class MainApp extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildChip(String label, bool isSelected) {
+    return Container(
+      width: 60, 
+      padding: const EdgeInsets.symmetric(vertical: 5), 
+      decoration: BoxDecoration(
+        color: isSelected ? const Color(0xFF0055FF) : Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center, 
+      child: Text(
+        label,
+        style: TextStyle(
+          color: isSelected ? Colors.white : Colors.black,
+          fontWeight: FontWeight.w500,
+          fontSize: 13,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildThumbnail(String assetPath) {
+    return Container(
+      width: 80,
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover,
         ),
       ),
     );
